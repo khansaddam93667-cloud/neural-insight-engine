@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neural Architecture - Knowledge Graph</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom thin weights for futuristic feel */
+        .icon-thin { font-variation-settings: 'wght' 200; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        
+        /* Subtle pulse for AI connecting lines */
+        @keyframes streamPulse {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.9; stroke-width: 2px; }
+            100% { opacity: 0.2; }
+        }
+        .stream-line {
+            animation: streamPulse 4s infinite ease-in-out;
+        }
+        .stream-line-delayed {
+            animation: streamPulse 4s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+        .stream-line-fast {
+            animation: streamPulse 2s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+
+        /* Neural Pulse Animations */
+        @keyframes rotateRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes rotateRingReverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+        @keyframes corePulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(195,245,255,0.3); transform: scale(1); }
+            50% { box-shadow: 0 0 40px rgba(195,245,255,0.8); transform: scale(1.05); }
+        }
+        @keyframes particleFloat {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+        }
+        @keyframes dashMove {
+            to { stroke-dashoffset: -20; }
+        }
+        
+        .anim-ring { animation: rotateRing 10s linear infinite; }
+        .anim-ring-reverse { animation: rotateRingReverse 15s linear infinite; }
+        .anim-core { animation: corePulse 3s ease-in-out infinite; }
+        .anim-dash { animation: dashMove 1s linear infinite; }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#ffeac0",
+                        "inverse-primary": "#006875",
+                        "inverse-on-surface": "#2b3040",
+                        "surface-dim": "#0e1322",
+                        "surface-container": "#1a1f2f",
+                        "surface-variant": "#2f3445",
+                        "surface-bright": "#343949",
+                        "surface-container-highest": "#2f3445",
+                        "on-surface": "#dee1f7",
+                        "on-background": "#dee1f7",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-primary-container": "#00626e",
+                        "on-primary": "#00363d",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "tertiary-fixed": "#ffdf96",
+                        "primary-container": "#00e5ff",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#6b00b0",
+                        "inverse-surface": "#dee1f7",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-container": "#fec931",
+                        "secondary-fixed-dim": "#dfb7ff",
+                        "surface-tint": "#00daf3",
+                        "on-primary-fixed": "#001f24",
+                        "outline": "#849396",
+                        "on-secondary-fixed": "#2d004f",
+                        "surface": "#0e1322",
+                        "on-secondary": "#4b007e",
+                        "surface-container-low": "#161b2b",
+                        "surface-container-high": "#25293a",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "primary": "#c3f5ff",
+                        "secondary-fixed": "#f1daff",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#f7e6ff",
+                        "on-tertiary": "#3e2e00",
+                        "on-error": "#690005",
+                        "background": "#0e1322",
+                        "secondary-container": "#9d05ff",
+                        "secondary": "#dfb7ff",
+                        "surface-container-lowest": "#090e1c",
+                        "outline-variant": "#3b494c",
+                        "primary-fixed": "#9cf0ff",
+                        "on-tertiary-container": "#6f5500",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#bac9cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(915px, 100dvh);
+      aspect-ratio: 9/20;
+    }
+  </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body overflow-hidden h-screen w-screen max-w-full selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-[#0e1322]/80 backdrop-blur-xl font-['Space_Grotesk'] tracking-tight font-bold fixed top-0 w-full z-50 bg-gradient-to-b from-[#161b2b] to-transparent shadow-[0_4px_20px_rgba(0,229,255,0.05)] flex justify-between items-center px-4 md:px-6 h-[72px] w-full max-w-none text-[#c3f5ff]">
+<!-- Leading -->
+<div class="flex items-center gap-3 cursor-pointer active:scale-95 hover:text-[#00e5ff] transition-colors duration-300 min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined icon-thin text-2xl">hub</span>
+<h1 class="text-xl font-black tracking-widest text-[#c3f5ff]">NEURAL_RESEACH</h1>
+</div>
+<!-- Desktop Nav Cluster (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-8 font-label text-sm uppercase tracking-widest">
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] gap-1 text-[#dee1f7]/50 hover:text-[#00e5ff] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined icon-thin">dashboard</span>
+                Hub
+            </a>
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] gap-1 text-[#dee1f7]/50 hover:text-[#00e5ff] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined icon-thin">temp_preferences_custom</span>
+                Query
+            </a>
+<!-- Active Nav Item on Desktop -->
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] gap-1 text-[#c3f5ff] drop-shadow-[0_0_8px_rgba(195,245,255,0.4)]" href="#">
+<span class="material-symbols-outlined icon-fill">account_tree</span>
+                Graph
+            </a>
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] gap-1 text-[#dee1f7]/50 hover:text-[#00e5ff] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined icon-thin">description</span>
+                Reports
+            </a>
+</nav>
+<!-- Trailing Avatar -->
+<div class="h-10 w-10 rounded-full overflow-hidden border border-[#3b494c]/50 cursor-pointer active:scale-95 shadow-[0_0_10px_rgba(195,245,255,0.2)]">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Futuristic glowing portrait of a female researcher in a dark neon-lit laboratory setting with cyan accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU-dnJHMuu5kAzK6IXWaj1CBXRGxRs7R8wkWQ3qhUGBcU_7rsWYn5q9rHsOUWuZlemHOzve1irW_B4BodACoYY4a12wF5N2VluBPqR5QLkohZ7Kfel8oykNv7RNpKhSYy7kdPMWdO9GpsWg9s8Q1ZMOW2h5o1adZ4KaNr5nWjiHBEWvqCKW2YxHY3_rCli_QeispAhd_34XIQsnmVD9kvRFzlQbvXhwMDqVe3RGkeDcfYuEgkXQwT6zzYe4-PVoMmNIHPtt3UouUAm"/>
+</div>
+</header>
+<!-- Main Canvas (The Void) -->
+<main class="relative w-full h-full pt-[72px] pb-[88px] md:pb-0 overflow-hidden touch-none" id="graph-canvas">
+<!-- Ambient Background Glows & Particles -->
+<div class="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-secondary/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
+<div class="absolute top-[30%] left-[40%] w-1 h-1 bg-primary rounded-full blur-[1px]" style="animation: particleFloat 6s infinite 1s;"></div>
+<div class="absolute top-[60%] left-[60%] w-1.5 h-1.5 bg-secondary rounded-full blur-[1px]" style="animation: particleFloat 8s infinite 3s;"></div>
+<div class="absolute top-[45%] left-[55%] w-1 h-1 bg-primary rounded-full blur-[1px]" style="animation: particleFloat 5s infinite 0s;"></div>
+<div class="absolute top-[70%] left-[30%] w-2 h-2 bg-secondary rounded-full blur-[2px]" style="animation: particleFloat 7s infinite 2s;"></div>
+</div>
+<!-- SVG Connection Lines -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="3"></fegaussianblur>
+<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+</filter>
+<lineargradient id="gradPrimary" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#9cf0ff" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#dfb7ff" stop-opacity="0.1"></stop>
+</lineargradient>
+<lineargradient id="gradSecondary" x1="100%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#dfb7ff" stop-opacity="0.6"></stop>
+<stop offset="100%" stop-color="#9cf0ff" stop-opacity="0.1"></stop>
+</lineargradient>
+</defs>
+<!-- Core to Top Left (Strong) -->
+<path class="stream-line" d="M 50% 50% L 25% 25%" fill="none" filter="url(#glow)" stroke="url(#gradPrimary)" stroke-width="2.5"></path>
+<circle fill="#c3f5ff" filter="url(#glow)" r="3">
+<animatemotion dur="2.5s" path="M 50% 50% L 25% 25%" repeatcount="indefinite"></animatemotion>
+</circle>
+<!-- Core to Top Right (Moderate) -->
+<path class="stream-line-delayed" d="M 50% 50% Q 65% 40% 75% 30%" fill="none" filter="url(#glow)" stroke="url(#gradSecondary)" stroke-width="1.5"></path>
+<path class="anim-dash" d="M 50% 50% Q 65% 40% 75% 30%" fill="none" opacity="0.5" stroke="#dfb7ff" stroke-dasharray="2 6" stroke-width="0.5"></path>
+<circle fill="#dfb7ff" filter="url(#glow)" r="2">
+<animatemotion dur="4s" path="M 50% 50% Q 65% 40% 75% 30%" repeatcount="indefinite"></animatemotion>
+</circle>
+<!-- Core to Bottom Left (Weak) -->
+<path d="M 50% 50% L 30% 75%" fill="none" stroke="#849396" stroke-dasharray="4 4" stroke-opacity="0.3" stroke-width="1"></path>
+<!-- Core to Bottom Right (Fast Pulse) -->
+<path class="stream-line-fast" d="M 50% 50% Q 60% 65% 70% 80%" fill="none" filter="url(#glow)" stroke="url(#gradSecondary)" stroke-width="2"></path>
+<circle fill="#dfb7ff" filter="url(#glow)" r="2.5">
+<animatemotion dur="1.8s" path="M 50% 50% Q 60% 65% 70% 80%" repeatcount="indefinite"></animatemotion>
+</circle>
+<!-- Interconnections -->
+<path class="anim-dash" d="M 25% 25% Q 50% 20% 75% 30%" fill="none" opacity="0.2" stroke="#c3f5ff" stroke-dasharray="4 8" stroke-width="1"></path>
+<path d="M 30% 75% Q 50% 85% 70% 80%" fill="none" opacity="0.1" stroke="#849396" stroke-width="0.5"></path>
+<path class="anim-dash" d="M 25% 25% Q 20% 50% 30% 75%" fill="none" opacity="0.15" stroke="#dfb7ff" stroke-dasharray="3 6" stroke-width="0.5"></path>
+</svg>
+<!-- Nodes Layer -->
+<div class="absolute inset-0 z-10 w-full h-full">
+<!-- Node: Concept Alpha (Top Left) -->
+<div class="absolute top-[25%] left-[25%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer min-h-[48px] min-w-[48px] flex justify-center items-center">
+<div class="relative flex items-center justify-center w-14 h-14 bg-surface-container rounded-2xl rotate-45 border border-primary/40 text-primary group-hover:bg-primary/10 transition-all duration-500 shadow-[0_0_15px_rgba(195,245,255,0.1)] group-hover:shadow-[0_0_25px_rgba(195,245,255,0.3)]">
+<div class="absolute inset-0 rounded-2xl border border-primary/20 rotate-12 group-hover:rotate-45 transition-transform duration-700"></div>
+<span class="material-symbols-outlined icon-thin text-xl -rotate-45">psychiatry</span>
+</div>
+<div class="absolute top-16 left-1/2 -translate-x-1/2 w-max text-center mt-2">
+<p class="font-headline text-base font-medium text-primary drop-shadow-[0_0_5px_rgba(195,245,255,0.5)]">Cognitive Models</p>
+<p class="font-label text-xs text-outline tracking-widest uppercase">8 Nodes</p>
+</div>
+</div>
+<!-- Node: Dataset Omega (Top Right) -->
+<div class="absolute top-[30%] left-[75%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer min-h-[48px] min-w-[48px] flex justify-center items-center">
+<div class="relative flex items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-secondary/40 text-secondary group-hover:bg-secondary/10 transition-all duration-500 shadow-[0_0_15px_rgba(223,183,255,0.1)] group-hover:shadow-[0_0_25px_rgba(223,183,255,0.3)]">
+<div class="absolute inset-2 bg-secondary/10 rounded-full anim-core"></div>
+<span class="material-symbols-outlined icon-thin text-lg">database</span>
+</div>
+<div class="absolute top-14 left-1/2 -translate-x-1/2 w-max text-center mt-2">
+<p class="font-headline text-base font-medium text-secondary drop-shadow-[0_0_5px_rgba(223,183,255,0.5)]">Dataset Omega</p>
+</div>
+</div>
+<!-- Core Active Node (Center) -->
+<div class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer z-20 min-h-[48px] min-w-[48px] flex justify-center items-center">
+<div class="relative flex items-center justify-center w-24 h-24 bg-surface-container-highest rounded-full border border-primary text-primary transition-all duration-300 anim-core bg-gradient-to-br from-primary/10 to-transparent">
+<!-- Orbital Rings -->
+<div class="absolute -inset-4 rounded-full border-t-2 border-r-2 border-primary/40 anim-ring"></div>
+<div class="absolute -inset-8 rounded-full border-b-2 border-l-2 border-secondary/30 anim-ring-reverse"></div>
+<div class="absolute -inset-1 rounded-full border border-primary/20 animate-ping" style="animation-duration: 3s;"></div>
+<!-- Core Glow -->
+<div class="absolute inset-2 bg-primary/20 blur-md rounded-full"></div>
+<span class="material-symbols-outlined icon-fill text-4xl drop-shadow-[0_0_10px_rgba(195,245,255,0.8)] z-10">token</span>
+</div>
+<div class="absolute top-32 left-1/2 -translate-x-1/2 w-max text-center backdrop-blur-md bg-surface-dim/60 py-1.5 px-4 rounded-full border border-primary/30 shadow-[0_0_20px_rgba(195,245,255,0.2)] mt-2">
+<p class="font-headline text-lg font-bold text-primary tracking-wide">Neural Synthesis</p>
+<p class="font-label text-xs text-secondary tracking-widest uppercase mt-0.5 flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></span> Active Focus
+</p>
+</div>
+</div>
+<!-- Node: User Feedback (Bottom Left) -->
+<div class="absolute top-[75%] left-[30%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer min-h-[48px] min-w-[48px] flex justify-center items-center">
+<div class="relative flex items-center justify-center w-12 h-12 bg-surface-container rounded-full border border-outline-variant text-on-surface-variant group-hover:border-primary/50 group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined icon-thin text-sm">group</span>
+</div>
+<div class="absolute top-14 left-1/2 -translate-x-1/2 w-max text-center mt-1">
+<p class="font-headline text-sm text-outline group-hover:text-primary/70 transition-colors">Telemetry Data</p>
+</div>
+</div>
+<!-- Node: Temporal Logs (Bottom Right) -->
+<div class="absolute top-[80%] left-[70%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer min-h-[48px] min-w-[48px] flex justify-center items-center">
+<div class="relative flex items-center justify-center w-16 h-16 bg-surface-container rounded-full border-2 border-dashed border-secondary/30 text-secondary/70 group-hover:border-secondary group-hover:text-secondary transition-all duration-500 shadow-lg group-hover:shadow-[0_0_20px_rgba(223,183,255,0.2)]">
+<div class="absolute inset-0 rounded-full border border-secondary/10 anim-ring"></div>
+<span class="material-symbols-outlined icon-thin text-2xl">history</span>
+</div>
+<div class="absolute top-20 left-1/2 -translate-x-1/2 w-max text-center mt-2">
+<p class="font-headline text-base font-medium text-secondary/80">Temporal Logs</p>
+<p class="font-label text-xs text-outline tracking-widest uppercase">Archived</p>
+</div>
+</div>
+</div>
+<!-- Sidebar / Details Overlay (Glassmorphism) -->
+<aside class="absolute top-24 right-6 w-80 max-h-[calc(100vh-10rem)] overflow-y-auto bg-surface-variant/70 backdrop-blur-2xl rounded-2xl border border-primary/20 shadow-[0_8px_32px_rgba(14,19,34,0.8)] z-30 hidden md:block">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
+<div class="p-6 flex flex-col gap-6">
+<!-- Header -->
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-sm animate-pulse">bolt</span>
+<span class="font-label text-xs uppercase tracking-widest text-secondary">Entity Selected</span>
+</div>
+<h2 class="font-headline text-3xl font-bold text-primary tracking-tight drop-shadow-[0_0_8px_rgba(195,245,255,0.3)]">Neural Synthesis</h2>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center">
+<span class="material-symbols-outlined icon-thin">close</span>
+</button>
+</div>
+<!-- Abstract -->
+<div class="space-y-2">
+<h3 class="font-headline text-sm font-semibold text-primary/70 uppercase tracking-widest">Abstract</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                        Central junction point bridging temporal log sequences with core cognitive models. Analyzes pattern dissonance across Dataset Omega.
+                    </p>
+</div>
+<!-- Metrics -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-lowest/60 p-3 rounded-xl border border-primary/10 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-8 h-8 bg-primary/10 rounded-bl-full"></div>
+<span class="block font-label text-xs text-outline uppercase tracking-widest mb-1">Confidence</span>
+<span class="font-headline text-2xl text-primary font-bold">98.4%</span>
+</div>
+<div class="bg-surface-container-lowest/60 p-3 rounded-xl border border-outline-variant/20">
+<span class="block font-label text-xs text-outline uppercase tracking-widest mb-1">Connections</span>
+<span class="font-headline text-2xl text-on-surface font-bold">1,042</span>
+</div>
+</div>
+<!-- Related Entities -->
+<div class="space-y-3">
+<h3 class="font-headline text-sm font-semibold text-primary/70 uppercase tracking-widest">Direct Links</h3>
+<ul class="flex flex-col gap-2">
+<li class="flex items-center gap-3 p-2 min-h-[48px] hover:bg-surface-container-highest rounded-lg cursor-pointer transition-all border border-transparent hover:border-primary/20">
+<div class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(195,245,255,0.8)]"></div>
+<span class="font-body text-base text-on-surface">Cognitive Models</span>
+<span class="material-symbols-outlined text-[16px] text-primary/50 ml-auto group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</li>
+<li class="flex items-center gap-3 p-2 min-h-[48px] hover:bg-surface-container-highest rounded-lg cursor-pointer transition-all border border-transparent hover:border-secondary/20">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_5px_rgba(223,183,255,0.8)]"></div>
+<span class="font-body text-base text-on-surface">Dataset Omega</span>
+<span class="material-symbols-outlined text-[16px] text-secondary/50 ml-auto group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</li>
+</ul>
+</div>
+<!-- Action -->
+<button class="w-full mt-2 py-4 min-h-[48px] bg-gradient-to-r from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 text-primary font-headline text-base font-bold tracking-wide uppercase rounded-xl border border-primary/30 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(195,245,255,0.1)] hover:shadow-[0_0_25px_rgba(195,245,255,0.2)]">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                    Isolate Sub-Graph
+                </button>
+</div>
+</aside>
+<!-- Floating Controls (Zoom/Pan) -->
+<div class="absolute bottom-32 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-surface-container-highest/90 backdrop-blur-xl p-2 rounded-3xl border border-primary/20 shadow-[0_8px_30px_rgba(0,0,0,0.5)] z-30">
+<button class="w-12 h-12 flex items-center justify-center rounded-2xl text-on-surface hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined icon-thin">remove</span>
+</button>
+<div class="flex flex-col items-center justify-center px-4 min-w-[64px]">
+<span class="font-headline text-base font-bold text-primary">100%</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">Zoom</span>
+</div>
+<button class="w-12 h-12 flex items-center justify-center rounded-2xl text-on-surface hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined icon-thin">add</span>
+</button>
+<div class="w-px h-8 bg-outline-variant/40 mx-1"></div>
+<button class="w-12 h-12 flex items-center justify-center rounded-2xl text-on-surface hover:bg-primary/10 hover:text-primary transition-all relative group">
+<div class="absolute inset-0 bg-primary/20 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined icon-thin relative z-10">my_location</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-2xl text-on-surface hover:bg-secondary/10 hover:text-secondary transition-all relative group">
+<div class="absolute inset-0 bg-secondary/20 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined icon-thin relative z-10">filter_list</span>
+<span class="absolute top-3 right-3 w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_5px_rgba(223,183,255,0.8)]"></span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-[#161b2b]/95 backdrop-blur-xl font-['Manrope'] text-xs uppercase tracking-widest text-[#c3f5ff] fixed bottom-0 w-full z-50 rounded-t-[32px] border-t border-[#3b494c]/30 shadow-[0_-8px_30px_rgba(14,19,34,0.6)] flex justify-around items-center h-[88px] pb-6 px-2">
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] text-[#dee1f7]/40 hover:text-[#c3f5ff] transition-all tap-highlight-transparent active:scale-90 gap-1.5" href="#">
+<span class="material-symbols-outlined icon-thin text-[22px]">dashboard</span>
+<span>Hub</span>
+</a>
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] text-[#dee1f7]/40 hover:text-[#c3f5ff] transition-all tap-highlight-transparent active:scale-90 gap-1.5" href="#">
+<span class="material-symbols-outlined icon-thin text-[22px]">temp_preferences_custom</span>
+<span>Query</span>
+</a>
+<!-- Active Nav Item -->
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] text-[#c3f5ff] drop-shadow-[0_0_8px_rgba(195,245,255,0.4)] transition-all tap-highlight-transparent active:scale-90 gap-1.5" href="#">
+<div class="bg-primary/10 px-4 py-1 rounded-full mb-0.5">
+<span class="material-symbols-outlined icon-fill text-[22px]">account_tree</span>
+</div>
+<span>Graph</span>
+</a>
+<a class="flex flex-col items-center justify-center min-h-[48px] min-w-[48px] text-[#dee1f7]/40 hover:text-[#c3f5ff] transition-all tap-highlight-transparent active:scale-90 gap-1.5" href="#">
+<span class="material-symbols-outlined icon-thin text-[22px]">description</span>
+<span>Reports</span>
+</a>
+</nav>
+</body></html>

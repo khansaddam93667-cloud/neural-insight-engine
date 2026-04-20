@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Data - Neural Nexus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdf96",
+                        "outline-variant": "#3b494c",
+                        "on-surface": "#dee1f7",
+                        "on-background": "#dee1f7",
+                        "on-surface-variant": "#bac9cc",
+                        "on-primary-container": "#00626e",
+                        "surface-variant": "#2f3445",
+                        "surface-dim": "#0e1322",
+                        "on-secondary-fixed": "#2d004f",
+                        "surface-container-lowest": "#090e1c",
+                        "primary-container": "#00e5ff",
+                        "primary": "#c3f5ff",
+                        "surface": "#0e1322",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#25293a",
+                        "on-primary": "#00363d",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#001f24",
+                        "surface-container-highest": "#2f3445",
+                        "surface-bright": "#343949",
+                        "on-primary-fixed-variant": "#004f58",
+                        "on-secondary-fixed-variant": "#6b00b0",
+                        "on-secondary": "#4b007e",
+                        "inverse-on-surface": "#2b3040",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "surface-container": "#1a1f2f",
+                        "on-tertiary": "#3e2e00",
+                        "inverse-primary": "#006875",
+                        "surface-container-low": "#161b2b",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "primary-fixed": "#9cf0ff",
+                        "on-tertiary-fixed": "#251a00",
+                        "inverse-surface": "#dee1f7",
+                        "secondary": "#dfb7ff",
+                        "tertiary": "#ffeac0",
+                        "on-error-container": "#ffdad6",
+                        "background": "#0e1322",
+                        "surface-tint": "#00daf3",
+                        "outline": "#849396",
+                        "on-secondary-container": "#f7e6ff",
+                        "on-tertiary-container": "#6f5500",
+                        "secondary-fixed": "#f1daff",
+                        "secondary-container": "#9d05ff",
+                        "tertiary-container": "#fec931",
+                        "secondary-fixed-dim": "#dfb7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); font-family: theme('fontFamily.body'); }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: theme('fontFamily.headline'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-variant'); border-radius: theme('borderRadius.full'); }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline-variant'); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pb-24 pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e1322]/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<button aria-label="Go back" class="text-[#c3f5ff] hover:bg-[#25293a]/50 transition-colors rounded-full p-2 -ml-2">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline tracking-tight text-xl font-bold text-[#c3f5ff]">Manage Data</h1>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/30 flex items-center justify-center">
+<img alt="Researcher Profile" class="w-full h-full object-cover" data-alt="close up portrait of a young professional in soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYjrJBhjEtUmH-JAx4A4vrG3ddLsNKY6CjoB05UPR6otu0evDv5w47kwf99yoTEAfv9AM4HwHt_WJUiQff--3azjZxrTVtHDfZPZT77xOi9D6RkW5hHF3AXbgHv3dKaG0uwLS7YJO6LkjiDefNBbWUdKBZsNWDBNrZSoKDtZ7YG6mEQzoDgUCncijjIltfi15g8Rh5-yyjsJWWLb1RyyWDRTeyyoIVGeHFXwwn6qU5TwfaLsSizQGOYcgpjdYsdw5MofOFHkyJDxvC"/>
+</div>
+</div>
+<div class="h-px w-full bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent"></div>
+</header>
+<main class="flex-1 px-4 md:px-6 py-6 md:py-8 max-w-3xl mx-auto w-full flex flex-col gap-8">
+<!-- Storage Overview -->
+<section class="bg-surface-container-low rounded-xl p-6 relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex justify-between items-end mb-4">
+<div>
+<h2 class="font-headline text-lg font-medium text-on-surface mb-1">Storage Allocation</h2>
+<p class="text-sm text-on-surface-variant font-body">Local Node Capacity</p>
+</div>
+<div class="text-right">
+<span class="font-headline text-2xl font-bold text-primary">1.2 GB</span>
+<span class="text-sm text-on-surface-variant font-body ml-1">/ 5.0 GB</span>
+</div>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 24%;"></div>
+<div class="h-full bg-secondary opacity-50" style="width: 15%;"></div>
+</div>
+<div class="flex gap-4 mt-4 text-xs font-body">
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-on-surface-variant">Research Nodes</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-secondary opacity-50"></div>
+<span class="text-on-surface-variant">Cached Assets</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<span class="text-on-surface-variant">Free Space</span>
+</div>
+</div>
+</section>
+<!-- Data Sync -->
+<section class="bg-surface-container-low rounded-xl p-1 flex flex-col gap-1">
+<div class="bg-surface-container p-5 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined icon-fill" data-icon="cloud_sync" data-weight="fill">cloud_sync</span>
+</div>
+<div>
+<h3 class="font-headline text-base font-medium text-on-surface">Neural Sync</h3>
+<p class="text-xs text-on-surface-variant font-body mt-0.5">Auto-backup nodes to Nexus Cloud</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="px-5 py-3 flex justify-between items-center text-xs">
+<span class="text-on-surface-variant font-body">Last successful sync: Today, 14:23 UTC</span>
+<button class="text-primary hover:text-primary-container transition-colors font-medium">Sync Now</button>
+</div>
+</section>
+<!-- Export Tools -->
+<section>
+<h2 class="font-headline text-lg font-medium text-on-surface mb-4 px-2">Export Protocol</h2>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-surface-container-low hover:bg-surface-container transition-colors p-4 rounded-xl flex flex-col items-start gap-3 border border-outline-variant/10 group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="data_object">data_object</span>
+</div>
+<div class="text-left">
+<span class="block font-headline text-sm text-on-surface">JSON Format</span>
+<span class="block text-xs text-on-surface-variant font-body mt-0.5">Raw node data</span>
+</div>
+</button>
+<button class="bg-surface-container-low hover:bg-surface-container transition-colors p-4 rounded-xl flex flex-col items-start gap-3 border border-outline-variant/10 group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+</div>
+<div class="text-left">
+<span class="block font-headline text-sm text-on-surface">PDF Report</span>
+<span class="block text-xs text-on-surface-variant font-body mt-0.5">Synthesized docs</span>
+</div>
+</button>
+<button class="bg-surface-container-low hover:bg-surface-container transition-colors p-4 rounded-xl flex flex-col items-start gap-3 border border-outline-variant/10 group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="table_view">table_view</span>
+</div>
+<div class="text-left">
+<span class="block font-headline text-sm text-on-surface">CSV Matrix</span>
+<span class="block text-xs text-on-surface-variant font-body mt-0.5">Tabular data</span>
+</div>
+</button>
+<button class="bg-surface-container-low hover:bg-surface-container transition-colors p-4 rounded-xl flex flex-col items-start gap-3 border border-outline-variant/10 group">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="markdown">markdown</span>
+</div>
+<div class="text-left">
+<span class="block font-headline text-sm text-on-surface">Markdown</span>
+<span class="block text-xs text-on-surface-variant font-body mt-0.5">Formatted text</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Maintenance & Danger Zone -->
+<section class="mb-8">
+<h2 class="font-headline text-lg font-medium text-on-surface mb-4 px-2">System Maintenance</h2>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-surface-container-low hover:bg-surface-container transition-colors p-4 rounded-xl flex items-center justify-between border border-outline-variant/10">
+<div class="flex items-center gap-3 text-left">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="cleaning_services">cleaning_services</span>
+<div>
+<span class="block font-headline text-sm text-on-surface">Clear Cache</span>
+<span class="block text-xs text-on-surface-variant font-body mt-0.5">Frees up ~450MB</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full bg-surface-container-low hover:bg-surface-container transition-colors p-4 rounded-xl flex items-center justify-between border border-outline-variant/10">
+<div class="flex items-center gap-3 text-left">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="database">database</span>
+<div>
+<span class="block font-headline text-sm text-on-surface">Optimize Database</span>
+<span class="block text-xs text-on-surface-variant font-body mt-0.5">Improves query speed</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="mt-4 p-4 rounded-xl border border-error/20 bg-error-container/10">
+<h3 class="font-headline text-sm font-medium text-error mb-1">Danger Zone</h3>
+<p class="text-xs text-on-surface-variant font-body mb-4">This action is irreversible and will permanently delete all local nodes.</p>
+<button class="w-full py-3 rounded-lg bg-error-container/20 hover:bg-error-container/40 text-error font-medium text-sm transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="delete_forever">delete_forever</span>
+                        Purge Local Data
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-2xl bg-[#0e1322]/90 backdrop-blur-lg shadow-[0_-10px_40px_rgba(0,229,255,0.05)] md:hidden">
+<div class="flex justify-around items-center h-20 w-full px-4 pb-safe bg-[#161b2b]">
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/40 hover:text-[#c3f5ff] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="hub">hub</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest">Nodes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/40 hover:text-[#c3f5ff] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="sync">sync</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#00e5ff] drop-shadow-[0_0_8px_rgba(0,229,255,0.5)]" href="#">
+<span class="material-symbols-outlined mb-1 icon-fill" data-icon="database" data-weight="fill">database</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest text-[#00e5ff]">Data</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/40 hover:text-[#c3f5ff] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="security">security</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest">Vault</span>
+</a>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Synthesized Report</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#ffeac0",
+                        "inverse-primary": "#006875",
+                        "inverse-on-surface": "#2b3040",
+                        "surface-dim": "#0e1322",
+                        "surface-container": "#1a1f2f",
+                        "surface-variant": "#2f3445",
+                        "surface-bright": "#343949",
+                        "surface-container-highest": "#2f3445",
+                        "on-surface": "#dee1f7",
+                        "on-background": "#dee1f7",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-primary-container": "#00626e",
+                        "on-primary": "#00363d",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "tertiary-fixed": "#ffdf96",
+                        "primary-container": "#00e5ff",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#6b00b0",
+                        "inverse-surface": "#dee1f7",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-container": "#fec931",
+                        "secondary-fixed-dim": "#dfb7ff",
+                        "surface-tint": "#00daf3",
+                        "on-primary-fixed": "#001f24",
+                        "outline": "#849396",
+                        "on-secondary-fixed": "#2d004f",
+                        "surface": "#0e1322",
+                        "on-secondary": "#4b007e",
+                        "surface-container-low": "#161b2b",
+                        "surface-container-high": "#25293a",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "primary": "#c3f5ff",
+                        "secondary-fixed": "#f1daff",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#f7e6ff",
+                        "on-tertiary": "#3e2e00",
+                        "on-error": "#690005",
+                        "background": "#0e1322",
+                        "secondary-container": "#9d05ff",
+                        "secondary": "#dfb7ff",
+                        "surface-container-lowest": "#090e1c",
+                        "outline-variant": "#3b494c",
+                        "primary-fixed": "#9cf0ff",
+                        "on-tertiary-container": "#6f5500",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#bac9cc"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-pulse {
+            animation: pulse-glow 3s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 4px rgba(223, 183, 255, 0.4)); }
+            100% { filter: drop-shadow(0 0 12px rgba(223, 183, 255, 0.8)); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased pt-[72px] pb-[104px] md:pb-8 selection:bg-primary-container selection:text-on-primary-container max-w-[480px] mx-auto md:max-w-none md:mx-0 shadow-2xl md:shadow-none bg-[#0e1322] relative overflow-x-hidden min-h-[900px] border-x border-surface-variant/20 md:border-none">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full max-w-[480px] md:max-w-none z-50 bg-[#0e1322]/90 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,229,255,0.05)] bg-gradient-to-b from-[#161b2b] to-[#161b2b]/80 border-b border-[#3b494c]/20">
+<!-- Android System Bar Placeholder (visual cue for height) -->
+<div class="h-8 w-full"></div>
+<div class="flex justify-between items-center px-4 md:px-6 h-[64px] w-full">
+<button class="flex items-center justify-center w-12 h-12 rounded-full hover:bg-surface-variant/30 active:bg-surface-variant/50 transition-colors mr-2 md:hidden">
+<span class="material-symbols-outlined text-[#c3f5ff]">menu</span>
+</button>
+<div class="flex items-center gap-2 cursor-pointer active:scale-95 hover:text-[#00e5ff] transition-colors duration-300">
+<span class="material-symbols-outlined text-[#c3f5ff] font-light">hub</span>
+<span class="text-lg font-black tracking-widest text-[#c3f5ff] font-['Space_Grotesk'] tracking-tight">NEURAL_RESEACH</span>
+</div>
+<div class="flex-1"></div>
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-variant/30 active:bg-surface-variant/50 transition-colors">
+<img alt="Profile" class="w-9 h-9 rounded-full object-cover shadow-[0_0_12px_rgba(195,245,255,0.25)]" data-alt="close up headshot of a futuristic researcher in moody dark blue lighting with cyan rim light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDajXwGP8L1t2-WQW26cLLdf2ZYMHQyuFy3nyHNE5ZQzctAFoUynBvICYqhZ1IqN-_1ibbjy2D7mfarKp9meJHN8E9gFILHHW3I697GguFluuPuPYg802WzVAXKc3CV7Uf1egfqzyClN6G-iuzfbu_FxfRpXumV55ijVHN8twz5MDf5R5VjJyZgyE_q8vU_MRMrAmRdgw8TcSKOrDsKBJWWLIAOf0BUNVNSzaMNuDeG4e2PpmlPunXvmAWeNpIYzdAMvU6LrSK_CM6g"/>
+</button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 mt-12 md:mt-16">
+<!-- Report Header -->
+<header class="mb-10 mt-6">
+<div class="flex items-center gap-2 text-secondary text-sm font-label mb-5 tracking-widest uppercase">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Synthesized Output</span>
+<span class="mx-2 text-outline-variant">•</span>
+<span class="text-outline">T-Minus 24h</span>
+</div>
+<h1 class="text-[34px] md:text-5xl lg:text-6xl font-headline font-bold text-primary leading-[1.15] tracking-tight mb-8">
+                Anomalous Market Divergence in Q3 Renewable Sectors
+            </h1>
+<div class="flex flex-wrap gap-3">
+<span class="bg-surface-container-high text-on-surface text-[13px] font-label px-4 py-2 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">tag</span> Volatility
+                </span>
+<span class="bg-surface-container-high text-on-surface text-[13px] font-label px-4 py-2 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">tag</span> ESG Data
+                </span>
+<span class="bg-surface-container-high text-on-surface text-[13px] font-label px-4 py-2 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">tag</span> Predictive Model Alpha
+                </span>
+</div>
+</header>
+<!-- Executive Summary -->
+<section class="relative bg-surface-container-low rounded-3xl p-7 md:p-8 mb-12 overflow-hidden shadow-lg border border-surface-variant/20">
+<!-- Decorative Glow -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary opacity-[0.06] blur-[80px] rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+<div class="relative z-10">
+<h2 class="text-[22px] font-headline font-semibold text-primary mb-5 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[26px]">summarize</span>
+                    Executive Summary
+                </h2>
+<p class="text-[17px] text-on-surface leading-[1.65] font-body">
+                    Analysis of cross-border capital flows reveals a statistically significant decoupling between European renewable energy equities and global baseline indices. The neural model indicates a <span class="text-primary font-semibold">94.2% probability</span> that this divergence is driven by anticipated shifts in localized regulatory frameworks rather than underlying technological advancements or macroeconomic headwinds.
+                </p>
+</div>
+</section>
+<!-- Key Insight Cards (Bento Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+<!-- Card 1 -->
+<div class="bg-surface-container rounded-3xl p-6 relative group hover:bg-surface-container-high transition-colors duration-500 shadow-md border border-surface-variant/20 active:scale-[0.98]">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center mb-5 text-secondary group-hover:shadow-[0_0_15px_rgba(223,183,255,0.2)] transition-shadow">
+<span class="material-symbols-outlined text-[24px]">trending_up</span>
+</div>
+<h3 class="text-[19px] font-headline text-on-surface mb-2.5">Capital Influx Anomaly</h3>
+<p class="text-[15px] text-on-surface-variant leading-relaxed">
+                    Detected an uncharacteristic $4.2B influx into Tier-2 solar component manufacturers over a 72-hour window, bypassing established Tier-1 leaders.
+                </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container rounded-3xl p-6 relative group hover:bg-surface-container-high transition-colors duration-500 shadow-md border border-surface-variant/20 active:scale-[0.98]">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center mb-5 text-primary group-hover:shadow-[0_0_15px_rgba(195,245,255,0.2)] transition-shadow">
+<span class="material-symbols-outlined text-[24px]">policy</span>
+</div>
+<h3 class="text-[19px] font-headline text-on-surface mb-2.5">Regulatory Correlation</h3>
+<p class="text-[15px] text-on-surface-variant leading-relaxed">
+                    High NLP correlation (0.88) found between the capital influx and leaked drafts of the upcoming EU Green Subsidies restructuring proposal.
+                </p>
+</div>
+</div>
+<!-- Detailed Analysis -->
+<section class="space-y-7 mb-14">
+<h2 class="text-[26px] font-headline font-semibold text-primary border-b border-surface-variant pb-5 mb-6">Deep Contextual Analysis</h2>
+<p class="text-[17px] text-on-surface-variant leading-[1.75] font-body">
+                The prevailing market narrative attributes recent volatility in the renewables sector to supply chain stabilizations in Southeast Asia. However, upon multi-layered ingestion of dark-pool trading data and alternative regulatory datasets, our neural architecture proposes an alternate thesis. The initial signal emerged as a minor perturbation in options pricing for mid-cap European solar firms.
+            </p>
+<div class="my-12 pl-7 border-l-[3px] border-secondary relative py-2">
+<!-- AI Stream indicator -->
+<svg class="absolute -left-[18.5px] top-4 ai-pulse" fill="none" height="34" viewbox="0 0 24 24" width="34" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L15 8L21 9L16 14L18 20L12 17L6 20L8 14L3 9L9 8L12 2Z" stroke="#dfb7ff" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+<p class="text-[19px] text-on-surface font-headline italic leading-relaxed">
+                    "The model explicitly flags the traditional supply-chain thesis as a lagging indicator, assigning it a confidence weight of merely 12% against current price movements."
+                </p>
+</div>
+<p class="text-[17px] text-on-surface-variant leading-[1.75] font-body">
+                By cross-referencing this options data with geospatial sentiment analysis of legislative districts across Germany and France, a hidden vector becomes apparent. Institutional positioning is proactively adjusting for a more localized, protectionist subsidy environment that favors domestic assembly over imported components, regardless of short-term margin compression.
+            </p>
+</section>
+<!-- Image / Data Viz Placeholder -->
+<div class="w-full h-72 rounded-3xl mb-14 bg-surface-container-low flex items-center justify-center relative overflow-hidden group shadow-lg">
+<img alt="Data Visualization" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-35 transition-opacity duration-700 mix-blend-luminosity" data-alt="abstract digital data visualization graph with glowing cyan and purple lines on a dark navy background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAWsnPjARfVyFjh_Qc3ees9Ruh2kT7-4V16n0nxwpWGayplGgbMNUaeY-WmVqxvq3r87bNcxOCwmhpN3o3S-nSNXmT0EfJVgg32pMImMezCjI6xi14mlMTTte-UYQBIZB2ync0-lHG-f6zrnB_U2lE9CITnT3N4iLpt70OQ8aaj6CBq4QOpdUbVbixnu9Q-BiFxMExxkT6hTmkFwRwruhcQeqIm-5nJInsWcWi-bFbWFk5sxk0ldLtH_4gGIqdFv8wgVC2O1eM-qqd"/>
+<div class="relative z-10 flex flex-col items-center bg-[#0e1322]/50 p-6 rounded-2xl backdrop-blur-sm border border-surface-variant/30">
+<span class="material-symbols-outlined text-4xl text-primary mb-3 opacity-90">bubble_chart</span>
+<span class="text-[13px] font-label text-primary tracking-widest uppercase font-semibold">Interactive Node Map Available in Hub</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-surface-dim to-transparent pointer-events-none"></div>
+</div>
+<!-- Source Citations -->
+<section class="bg-surface-container-lowest rounded-3xl p-7 md:p-8 mb-6 border border-surface-variant/40 shadow-sm">
+<h2 class="text-[13px] font-label text-outline tracking-widest uppercase mb-7 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">library_books</span>
+                Source Vectors
+            </h2>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-surface-bright mt-0.5 text-[20px]">link</span>
+<div class="flex-1">
+<a class="text-on-surface hover:text-primary transition-colors text-[16px] font-medium block mb-1 active:opacity-70 p-1 -m-1" href="#">Global Dark Pool Equities Feed (Node 7A)</a>
+<span class="text-[13px] text-outline font-label block">Timestamp: 2023-10-26T14:32:00Z | Confidence: High</span>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-surface-bright mt-0.5 text-[20px]">link</span>
+<div class="flex-1">
+<a class="text-on-surface hover:text-primary transition-colors text-[16px] font-medium block mb-1 active:opacity-70 p-1 -m-1" href="#">EU Legislative Draft Ingestion Pipeline</a>
+<span class="text-[13px] text-outline font-label block">Timestamp: 2023-10-25T09:15:00Z | Confidence: Medium-High</span>
+</div>
+</li>
+</ul>
+</section>
+</main>
+<!-- BottomNavBar - Android 15 Style -->
+<nav class="fixed bottom-0 w-full max-w-[480px] md:max-w-none z-50 rounded-t-3xl bg-[#161b2b]/95 backdrop-blur-xl border-t border-[#3b494c]/25 shadow-[0_-12px_40px_rgba(14,19,34,0.6)] md:hidden">
+<div class="flex justify-around items-center w-full h-[88px] pb-5 pt-3 px-3">
+<!-- Hub (Inactive) -->
+<button class="flex flex-col items-center justify-center text-[#dee1f7]/50 hover:text-[#c3f5ff] transition-all tap-highlight-transparent active:scale-95 font-['Manrope'] text-[11px] font-medium tracking-wide w-20 h-14 rounded-2xl active:bg-surface-variant/20">
+<span class="material-symbols-outlined mb-1.5 text-[26px]">dashboard</span>
+<span>Hub</span>
+</button>
+<!-- Query (Inactive) -->
+<button class="flex flex-col items-center justify-center text-[#dee1f7]/50 hover:text-[#c3f5ff] transition-all tap-highlight-transparent active:scale-95 font-['Manrope'] text-[11px] font-medium tracking-wide w-20 h-14 rounded-2xl active:bg-surface-variant/20">
+<span class="material-symbols-outlined mb-1.5 text-[26px]">temp_preferences_custom</span>
+<span>Query</span>
+</button>
+<!-- Graph (Inactive) -->
+<button class="flex flex-col items-center justify-center text-[#dee1f7]/50 hover:text-[#c3f5ff] transition-all tap-highlight-transparent active:scale-95 font-['Manrope'] text-[11px] font-medium tracking-wide w-20 h-14 rounded-2xl active:bg-surface-variant/20">
+<span class="material-symbols-outlined mb-1.5 text-[26px]">account_tree</span>
+<span>Graph</span>
+</button>
+<!-- Reports (Active) -->
+<button class="flex flex-col items-center justify-center text-[#001f24] bg-[#c3f5ff] transition-all tap-highlight-transparent active:scale-95 font-['Manrope'] text-[11px] font-bold tracking-wide w-20 h-14 rounded-2xl shadow-[0_4px_12px_rgba(195,245,255,0.25)]">
+<span class="material-symbols-outlined mb-1 text-[26px]" style="font-variation-settings: 'FILL' 1;">description</span>
+<span>Reports</span>
+</button>
+</div>
+<!-- Android Navigation Bar Hint Placeholder -->
+<div class="h-4 w-full flex justify-center items-end pb-2">
+<div class="w-1/3 h-[3px] rounded-full bg-white/40"></div>
+</div>
+</nav>
+</body></html>

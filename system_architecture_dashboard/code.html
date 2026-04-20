@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Architecture Dashboard - Neural OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#dfb7ff",
+                        "secondary": "#dfb7ff",
+                        "surface-container-lowest": "#090e1c",
+                        "primary-fixed-dim": "#00daf3",
+                        "primary": "#c3f5ff",
+                        "surface-dim": "#0e1322",
+                        "primary-container": "#00e5ff",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#f1daff",
+                        "outline": "#849396",
+                        "on-secondary-container": "#f7e6ff",
+                        "on-error": "#690005",
+                        "background": "#0e1322",
+                        "surface": "#0e1322",
+                        "inverse-surface": "#dee1f7",
+                        "surface-bright": "#343949",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#fec931",
+                        "surface-variant": "#2f3445",
+                        "on-secondary": "#4b007e",
+                        "surface-tint": "#00daf3",
+                        "on-tertiary-fixed": "#251a00",
+                        "surface-container-low": "#161b2b",
+                        "secondary-container": "#9d05ff",
+                        "on-primary-container": "#00626e",
+                        "on-primary": "#00363d",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-surface": "#dee1f7",
+                        "surface-container-highest": "#2f3445",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "surface-container-high": "#25293a",
+                        "primary-fixed": "#9cf0ff",
+                        "on-secondary-fixed": "#2d004f",
+                        "on-primary-fixed-variant": "#004f58",
+                        "surface-container": "#1a1f2f",
+                        "tertiary": "#ffeac0",
+                        "outline-variant": "#3b494c",
+                        "on-tertiary": "#3e2e00",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#6f5500",
+                        "on-surface-variant": "#bac9cc",
+                        "on-background": "#dee1f7",
+                        "on-secondary-fixed-variant": "#6b00b0",
+                        "inverse-primary": "#006875",
+                        "inverse-on-surface": "#2b3040",
+                        "on-primary-fixed": "#001f24",
+                        "tertiary-fixed-dim": "#f3bf26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glow-primary {
+            box-shadow: 0 0 20px 0 rgba(195, 245, 255, 0.1);
+        }
+        .glow-secondary {
+            box-shadow: 0 0 20px 0 rgba(223, 183, 255, 0.1);
+        }
+        .glass-panel {
+            background-color: rgba(47, 52, 69, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .thin-icon {
+            font-variation-settings: 'FILL' 0, 'wght' 100, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(14, 19, 34, 1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(59, 73, 76, 0.5);
+            border-radius: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-[#0e1322]/80 backdrop-blur-md docked full-width top-0 sticky z-50 bg-gradient-to-b from-[#161b2b] to-transparent shadow-[0_4px_20px_rgba(0,229,255,0.05)] flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00e5ff] thin-icon text-2xl">account_tree</span>
+<h1 class="font-['Space_Grotesk'] font-bold text-[#c3f5ff] tracking-widest text-xl">NEURAL_OS</h1>
+</div>
+<div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30 overflow-hidden">
+<span class="material-symbols-outlined text-on-surface thin-icon text-sm">person</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 w-full overflow-hidden relative">
+<!-- NavigationDrawer (Web only, hidden on mobile) -->
+<nav class="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-[#161b2b] border-r border-[#3b494c]/20 flat flex-col py-6 gap-2 z-40 mt-[72px]">
+<div class="px-6 mb-4">
+<h2 class="font-['Space_Grotesk'] text-xl uppercase font-black text-[#00e5ff] tracking-wider">CORE_ARCH</h2>
+</div>
+<ul class="flex flex-col w-full">
+<!-- System Monitor - Active -->
+<li>
+<a class="bg-[#25293a] text-[#00e5ff] border-r-2 border-[#00e5ff] shadow-[0_0_15px_rgba(0,229,255,0.1)] flex items-center gap-4 px-6 py-3 font-['Manrope'] text-sm font-medium transition-all ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined thin-icon">monitoring</span>
+                        System Monitor
+                    </a>
+</li>
+<!-- MCP Connectors - Inactive -->
+<li>
+<a class="text-[#dee1f7]/50 hover:text-[#dee1f7] hover:bg-[#1a1f2f] hover:pl-2 flex items-center gap-4 px-6 py-3 font-['Manrope'] text-sm font-medium transition-all ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined thin-icon">hub</span>
+                        MCP Connectors
+                    </a>
+</li>
+<!-- API Gateways - Inactive -->
+<li>
+<a class="text-[#dee1f7]/50 hover:text-[#dee1f7] hover:bg-[#1a1f2f] hover:pl-2 flex items-center gap-4 px-6 py-3 font-['Manrope'] text-sm font-medium transition-all ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined thin-icon">api</span>
+                        API Gateways
+                    </a>
+</li>
+<!-- Logic Nodes - Inactive -->
+<li>
+<a class="text-[#dee1f7]/50 hover:text-[#dee1f7] hover:bg-[#1a1f2f] hover:pl-2 flex items-center gap-4 px-6 py-3 font-['Manrope'] text-sm font-medium transition-all ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined thin-icon">memory</span>
+                        Logic Nodes
+                    </a>
+</li>
+<!-- Neural Logs - Inactive -->
+<li>
+<a class="text-[#dee1f7]/50 hover:text-[#dee1f7] hover:bg-[#1a1f2f] hover:pl-2 flex items-center gap-4 px-6 py-3 font-['Manrope'] text-sm font-medium transition-all ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined thin-icon">terminal</span>
+                        Neural Logs
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 w-full md:ml-64 p-4 md:p-8 pb-24 overflow-y-auto z-10">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">System Architecture Dashboard</h2>
+<p class="font-body text-on-surface-variant text-sm">Real-time telemetry and logic flow monitoring.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min">
+<!-- 1. Core Engine Status (Span 12 mobile, 4 md) -->
+<section class="col-span-1 md:col-span-4 bg-surface-container-low rounded-xl border border-outline-variant/20 p-5 flex flex-col">
+<h3 class="font-headline text-sm uppercase tracking-widest text-primary mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-lg">memory</span>
+                            Core Engine Status
+                        </h3>
+<div class="space-y-4 flex-1">
+<!-- Jule -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary glow-primary"></div>
+<span class="font-body text-sm font-medium text-on-surface">Jule Engine</span>
+</div>
+<span class="font-headline text-xs text-primary bg-primary/10 px-2 py-1 rounded">Active</span>
+</div>
+<!-- MCP Layer -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary glow-secondary animate-pulse"></div>
+<span class="font-body text-sm font-medium text-on-surface">MCP Layer</span>
+</div>
+<span class="font-headline text-xs text-secondary bg-secondary/10 px-2 py-1 rounded">Syncing</span>
+</div>
+<!-- Gemini API -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary glow-primary"></div>
+<span class="font-body text-sm font-medium text-on-surface">Gemini API</span>
+</div>
+<span class="font-headline text-xs text-primary bg-primary/10 px-2 py-1 rounded">Optimized</span>
+</div>
+</div>
+</section>
+<!-- 3. API Gateway Health (Span 12 mobile, 8 md) -->
+<section class="col-span-1 md:col-span-8 bg-surface-container-low rounded-xl border border-outline-variant/20 p-5 flex flex-col relative overflow-hidden">
+<!-- Abstract background graphic -->
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 80% 20%, #00e5ff 0%, transparent 40%);"></div>
+<div class="flex justify-between items-center mb-5 z-10">
+<h3 class="font-headline text-sm uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-lg">api</span>
+                                API Gateway Health
+                            </h3>
+<span class="font-body text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined thin-icon text-xs">schedule</span>
+                                Last 24h
+                            </span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4 z-10">
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/10">
+<span class="font-body text-xs text-on-surface-variant block mb-1">Avg Response Time</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-2xl font-bold text-on-surface">124</span>
+<span class="font-body text-xs text-primary">ms</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/10">
+<span class="font-body text-xs text-on-surface-variant block mb-1">Token Usage (Gemini)</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-2xl font-bold text-on-surface">1.2M</span>
+<span class="font-body text-xs text-secondary">tokens</span>
+</div>
+</div>
+</div>
+<!-- Pseudo Graph Area -->
+<div class="flex-1 mt-2 min-h-[100px] flex items-end gap-1 z-10">
+<div class="w-full h-[60%] bg-surface-container rounded-t-sm relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">110ms</div></div>
+<div class="w-full h-[40%] bg-surface-container rounded-t-sm relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">95ms</div></div>
+<div class="w-full h-[80%] bg-surface-container rounded-t-sm relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">140ms</div></div>
+<div class="w-full h-[50%] bg-surface-container rounded-t-sm relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">105ms</div></div>
+<div class="w-full h-[30%] bg-surface-container rounded-t-sm relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">80ms</div></div>
+<div class="w-full h-[70%] bg-surface-container rounded-t-sm relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">130ms</div></div>
+<div class="w-full h-[90%] bg-primary/20 rounded-t-sm relative border-t border-primary group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity text-primary">160ms</div></div>
+<div class="w-full h-[60%] bg-surface-container rounded-t-sm relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">115ms</div></div>
+</div>
+</section>
+<!-- 2. Active MCP Connectors (Span 12 mobile, 6 md) -->
+<section class="col-span-1 md:col-span-6 bg-surface-container-low rounded-xl border border-outline-variant/20 p-5">
+<div class="flex justify-between items-center mb-5">
+<h3 class="font-headline text-sm uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-lg">hub</span>
+                                Active Connectors
+                            </h3>
+<button class="text-xs text-primary hover:text-primary-container transition-colors">Manage</button>
+</div>
+<div class="space-y-3">
+<!-- Connector 1 -->
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant/10 hover:border-outline-variant/30 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-on-surface-variant">corporate_fare</span>
+<h4 class="font-body text-sm font-medium text-on-surface">Corporate Registry Alpha</h4>
+</div>
+<span class="flex items-center gap-1 text-xs text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary glow-primary"></span> Live
+                                    </span>
+</div>
+<div class="flex items-center justify-between mt-3 text-xs">
+<span class="text-on-surface-variant">Throughput:</span>
+<span class="font-mono text-on-surface bg-surface-container-highest px-2 py-0.5 rounded">45.2 MB/s</span>
+</div>
+</div>
+<!-- Connector 2 -->
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant/10 hover:border-outline-variant/30 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-on-surface-variant">public</span>
+<h4 class="font-body text-sm font-medium text-on-surface">Gov-Media Monitor</h4>
+</div>
+<span class="flex items-center gap-1 text-xs text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary glow-primary"></span> Live
+                                    </span>
+</div>
+<div class="flex items-center justify-between mt-3 text-xs">
+<span class="text-on-surface-variant">Throughput:</span>
+<span class="font-mono text-on-surface bg-surface-container-highest px-2 py-0.5 rounded">12.8 MB/s</span>
+</div>
+</div>
+<!-- Connector 3 -->
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant/10 hover:border-outline-variant/30 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-on-surface-variant">travel_explore</span>
+<h4 class="font-body text-sm font-medium text-on-surface">Deep Web Crawler</h4>
+</div>
+<span class="flex items-center gap-1 text-xs text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary glow-secondary animate-pulse"></span> Indexing
+                                    </span>
+</div>
+<div class="flex items-center justify-between mt-3 text-xs">
+<span class="text-on-surface-variant">Throughput:</span>
+<span class="font-mono text-secondary bg-surface-container-highest px-2 py-0.5 rounded">108.5 MB/s</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Logic Nodes Flow (Span 12 mobile, 6 md) -->
+<section class="col-span-1 md:col-span-6 bg-surface-container-low rounded-xl border border-outline-variant/20 p-5 flex flex-col">
+<h3 class="font-headline text-sm uppercase tracking-widest text-primary mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-lg">schema</span>
+                            Logic Nodes Flow
+                        </h3>
+<div class="flex-1 bg-surface-container rounded-lg border border-outline-variant/10 p-4 flex flex-col justify-center relative overflow-hidden">
+<!-- Abstract node connections -->
+<div class="flex items-center justify-between relative z-10 w-full px-2">
+<!-- Node 1 -->
+<div class="flex flex-col items-center gap-2 z-20">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+<span class="material-symbols-outlined thin-icon text-primary">hub</span>
+</div>
+<span class="text-[10px] font-headline text-on-surface-variant uppercase tracking-wider">MCP</span>
+</div>
+<!-- Connection Path -->
+<div class="flex-1 h-[1px] bg-outline-variant/30 relative mx-2">
+<!-- Animated pulse dot -->
+<div class="absolute top-1/2 -translate-y-1/2 left-1/4 w-1.5 h-1.5 rounded-full bg-primary glow-primary"></div>
+</div>
+<!-- Node 2 -->
+<div class="flex flex-col items-center gap-2 z-20">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-secondary flex items-center justify-center shadow-[0_0_15px_rgba(223,183,255,0.2)]">
+<span class="material-symbols-outlined thin-icon text-secondary">memory</span>
+</div>
+<span class="text-[10px] font-headline text-on-surface-variant uppercase tracking-wider">JULE</span>
+</div>
+<!-- Connection Path -->
+<div class="flex-1 h-[1px] bg-outline-variant/30 relative mx-2">
+<!-- Animated pulse dot -->
+<div class="absolute top-1/2 -translate-y-1/2 left-3/4 w-1.5 h-1.5 rounded-full bg-secondary glow-secondary"></div>
+</div>
+<!-- Node 3 -->
+<div class="flex flex-col items-center gap-2 z-20">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined thin-icon text-on-surface">psychology</span>
+</div>
+<span class="text-[10px] font-headline text-on-surface-variant uppercase tracking-wider">Synth</span>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-outline-variant/10 text-center">
+<span class="font-body text-xs text-on-surface-variant">Current Focus: Entity Resolution &amp; Context Mapping</span>
+</div>
+</div>
+</section>
+<!-- 5. System Logs (Span 12) -->
+<section class="col-span-1 md:col-span-12 bg-surface-container-low rounded-xl border border-outline-variant/20 p-5">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline text-sm uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined thin-icon text-lg">terminal</span>
+                                System Logs
+                            </h3>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-variant"></span>
+<span class="w-3 h-3 rounded-full bg-surface-variant"></span>
+<span class="w-3 h-3 rounded-full bg-surface-variant"></span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-4 font-mono text-xs h-48 overflow-y-auto space-y-2 border border-outline-variant/10">
+<div class="text-on-surface-variant"><span class="text-outline">[14:32:01]</span> SYS_INIT: Neural OS core modules loaded.</div>
+<div class="text-on-surface-variant"><span class="text-outline">[14:32:05]</span> MCP_CONN: Establishing secure socket to CorpReg Alpha... <span class="text-primary">OK</span></div>
+<div class="text-on-surface-variant"><span class="text-outline">[14:32:12]</span> API_GATE: Requesting context window expansion (Gemini Pro).</div>
+<div class="text-secondary"><span class="text-outline">[14:32:15]</span> WARN: Deep Web Crawler indexing delay. Adjusting throttle.</div>
+<div class="text-on-surface-variant"><span class="text-outline">[14:32:20]</span> LOGIC_NODE: Synth Engine receiving initial data packets (45MB).</div>
+<div class="text-primary"><span class="text-outline">[14:32:22]</span> JULE: Entity cluster identified. Awaiting further resolution.</div>
+<div class="text-on-surface-variant"><span class="text-outline">[14:32:30]</span> MCP_CONN: Heartbeat Gov-Media Monitor... <span class="text-primary">OK</span></div>
+<div class="text-on-surface-variant"><span class="text-outline">[14:32:35]</span> SYS_MON: CPU load nominal (12%). Memory allocated (4.2GB).</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile only, hidden on md+) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 md:hidden bg-[#0e1322]/90 backdrop-blur-lg rounded-t-xl border-t border-[#3b494c]/20 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<!-- Nodes (System Monitor intent) - Active -->
+<a class="flex flex-col items-center justify-center text-[#00e5ff] scale-110 active:bg-[#1a1f2f] animate-pulse-slow p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">developer_board</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-tighter mt-1">Nodes</span>
+</a>
+<!-- Connect - Inactive -->
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/40 active:bg-[#1a1f2f] p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-tighter mt-1">Connect</span>
+</a>
+<!-- Alerts - Inactive -->
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/40 active:bg-[#1a1f2f] p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">notification_important</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-tighter mt-1">Alerts</span>
+</a>
+</nav>
+</body></html>

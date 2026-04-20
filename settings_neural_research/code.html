@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Neural Research</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#25293a",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-secondary-fixed-variant": "#6b00b0",
+                        "on-secondary": "#4b007e",
+                        "tertiary-container": "#fec931",
+                        "inverse-primary": "#006875",
+                        "inverse-on-surface": "#2b3040",
+                        "secondary": "#dfb7ff",
+                        "primary-fixed": "#9cf0ff",
+                        "on-secondary-fixed": "#2d004f",
+                        "surface-container-lowest": "#090e1c",
+                        "surface": "#0e1322",
+                        "on-secondary-container": "#f7e6ff",
+                        "surface-bright": "#343949",
+                        "secondary-fixed": "#f1daff",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "tertiary": "#ffeac0",
+                        "secondary-fixed-dim": "#dfb7ff",
+                        "on-primary-fixed": "#001f24",
+                        "surface-container-low": "#161b2b",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-surface-variant": "#bac9cc",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-dim": "#0e1322",
+                        "on-primary-fixed-variant": "#004f58",
+                        "on-primary": "#00363d",
+                        "on-surface": "#dee1f7",
+                        "on-error": "#690005",
+                        "surface-container": "#1a1f2f",
+                        "on-tertiary": "#3e2e00",
+                        "background": "#0e1322",
+                        "on-tertiary-container": "#6f5500",
+                        "on-primary-container": "#00626e",
+                        "error": "#ffb4ab",
+                        "on-background": "#dee1f7",
+                        "surface-tint": "#00daf3",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "error-container": "#93000a",
+                        "primary-container": "#00e5ff",
+                        "primary": "#c3f5ff",
+                        "surface-variant": "#2f3445",
+                        "outline": "#849396",
+                        "inverse-surface": "#dee1f7",
+                        "secondary-container": "#9d05ff",
+                        "outline-variant": "#3b494c",
+                        "surface-container-highest": "#2f3445"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+            font-family: theme('fontFamily.body');
+        }
+        .material-symbols-outlined {
+            font-weight: 100;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen pb-24 md:pb-0 md:pl-80">
+<!-- TopAppBar (Mobile & Web) -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#0e1322]/80 backdrop-blur-xl bg-gradient-to-b from-[#161b2b] to-transparent shadow-[0_4px_20px_rgba(0,229,255,0.05)] md:hidden">
+<div class="flex items-center gap-4">
+<button class="text-[#dee1f7]/60 hover:text-[#00e5ff] transition-colors duration-300 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Space_Grotesk'] text-xl font-bold tracking-tight text-[#c3f5ff]">Settings</h1>
+</div>
+<div>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-outline-variant/30 object-cover" data-alt="Portrait of a user with calm expression against a dark background, soft cyan lighting, cyberpunk aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7uHqHjYrFYw7-YvDvngDvCbAAFYvF2LQmW7ujNa1oQPv93jcSbSktUroBotN4M3F22W9rLpNL1mo1t9PNtynv-4bN8TplDYs-9vFat5-nYgSK_VsGQdtVo9Q55qNx7gB9Hj9X2R3YSHMGBw8kR2nWdVdOHQV57eS0Pn9oMkEQZVb-ZJWPTX3cZdf1gSXcCay780fhJovaIoDDO1DD6OVZrsIEps1Xr8E_fk7XEuf1t_jltKxcgtTTaQ11RRNpHX2l-9pyjW4XkPY_"/>
+</div>
+</header>
+<!-- NavigationDrawer (Web only) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full z-[60] flex-col p-6 w-80 rounded-r-2xl bg-[#161b2b] divide-y divide-[#3b494c]/10 shadow-2xl shadow-cyan-900/20">
+<!-- Header -->
+<div class="flex items-center gap-4 pb-6">
+<img alt="Research Lead Profile" class="w-12 h-12 rounded-full border border-primary/30 object-cover" data-alt="Portrait of a user with calm expression against a dark background, soft cyan lighting, cyberpunk aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtrJ_8Y31tP0HfkyrLACv-kZViIsioPqQYNq19pTwiggwp8N1B1pNC1XbBUcPquRtWZRDxjbqp-Nc5UucCyrxmBCiOCyOcbuyp3pbK2YRH6O-slpQY1G9aUXkSt6W4nJ0n9mTbL_CAv0Bvf5tm5Nz_IfWB1enRlp5Lmz2nkggbSJcgLjftMJyG9QfFLNBr31s7UrzdRvI2TU_-0vGJYtuRjSdaX_9AGCAznAOB-I-NrSaPQ0ZTKOa3SlGha-sKKhz0p_P4qDL_u4oS"/>
+<div class="flex flex-col text-left">
+<span class="font-['Space_Grotesk'] text-[#00e5ff] font-bold text-sm">Lead Researcher</span>
+<span class="font-['Manrope'] text-sm font-light text-[#dfb7ff]">Deep Research Protocol v4.2</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Verified Entity</span>
+</div>
+</div>
+<!-- Navigation Items -->
+<div class="flex-1 py-6 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#dee1f7]/70 hover:bg-[#1a1f2f] hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-['Manrope'] text-sm font-light">Account Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#dee1f7]/70 hover:bg-[#1a1f2f] hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<span class="font-['Manrope'] text-sm font-light">Neural Models</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#dee1f7]/70 hover:bg-[#1a1f2f] hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+<span class="font-['Manrope'] text-sm font-light">Data Clusters</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#dee1f7]/70 hover:bg-[#1a1f2f] hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+<span class="font-['Manrope'] text-sm font-light">Visual Interface</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#25293a] text-[#c3f5ff] border-l-2 border-[#00e5ff] transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-['Manrope'] text-sm font-light">System Diagnostics</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-4 md:pt-10 md:px-10 max-w-4xl mx-auto space-y-8">
+<!-- Section: Account Profile -->
+<section class="bg-surface-container-low rounded-xl p-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container-high/50 to-transparent pointer-events-none"></div>
+<div class="relative z-10 p-5 space-y-4">
+<h2 class="font-headline text-lg font-semibold text-primary tracking-wide">Account Profile</h2>
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between transition-colors hover:bg-surface-container-high/80 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant/50 relative">
+<img alt="Avatar" class="w-full h-full rounded-full object-cover" data-alt="Portrait of a user with calm expression against a dark background, soft cyan lighting, cyberpunk aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr421q70t6UHr0ZXaznKrec4t0mDhgMU7SHMkJFkxF7lOCmS-fLhM2WR5b1L8kcb9F2D8dNG8Ntp6KNQnKq9Vcnw7DiUPv2Nrl65SdLKDmTBO3nsWicE8A9hcJx2ke9qnKXX25aX4QF1D86TwdCeoAJqe4qK_a7FEP5A5wMWLXWae-sNOzgAD8i3aTtJnIjzSqOBGimQONsE-AQCrU-xrSHXUSX8rq1Zlpa1Qtb3ud-CdKQ7I1SwHqwmhDAsELxb9IC1laHCAKtvEQ"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-surface-container shadow-[0_0_8px_rgba(0,229,255,0.6)]"></div>
+</div>
+<div>
+<div class="font-body font-medium text-on-surface">Dr. Elena Rostova</div>
+<div class="font-body text-sm text-on-surface-variant">elena.r@neural-nexus.net</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between transition-colors hover:bg-surface-container-high/80 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+</div>
+<div>
+<div class="font-body font-medium text-on-surface">Access Tier</div>
+<div class="font-body text-sm text-secondary">Omega Level (Unlimited)</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Section: Research Parameters -->
+<section class="bg-surface-container-low rounded-xl p-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container-high/50 to-transparent pointer-events-none"></div>
+<div class="relative z-10 p-5 space-y-4">
+<h2 class="font-headline text-lg font-semibold text-primary tracking-wide">Research Parameters</h2>
+<div class="space-y-2">
+<div class="bg-surface-container rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors hover:bg-surface-container-high/80 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<div>
+<div class="font-body font-medium text-on-surface">Neural Model</div>
+<div class="font-body text-sm text-on-surface-variant">Current: GPT-Omni v4</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm text-primary font-medium">Select Model</span>
+<span class="material-symbols-outlined text-primary" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 transition-colors hover:bg-surface-container-high/80">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+</div>
+<div>
+<div class="font-body font-medium text-on-surface">Default Depth</div>
+<div class="font-body text-sm text-on-surface-variant">Analysis thoroughness</div>
+</div>
+</div>
+<span class="font-headline text-primary">Deep</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary" max="3" min="1" type="range" value="3"/>
+<div class="flex justify-between text-xs text-outline mt-2 font-body">
+<span>Surface</span>
+<span>Standard</span>
+<span>Deep</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between transition-colors hover:bg-surface-container-high/80 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="cable">cable</span>
+</div>
+<div>
+<div class="font-body font-medium text-on-surface">Connected Sources</div>
+<div class="font-body text-sm text-on-surface-variant">ArXiv, PubMed, Local DB</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Interface -->
+<section class="bg-surface-container-low rounded-xl p-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container-high/50 to-transparent pointer-events-none"></div>
+<div class="relative z-10 p-5 space-y-4">
+<h2 class="font-headline text-lg font-semibold text-primary tracking-wide">Interface</h2>
+<div class="space-y-2">
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between transition-colors hover:bg-surface-container-high/80 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<div class="font-body font-medium text-on-surface">Dark Theme</div>
+</div>
+<div class="w-10 h-5 bg-primary-container rounded-full relative shadow-[0_0_10px_rgba(0,229,255,0.3)]">
+<div class="absolute right-1 top-0.5 w-4 h-4 bg-surface rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 transition-colors hover:bg-surface-container-high/80">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined" data-icon="format_size">format_size</span>
+</div>
+<div class="font-body font-medium text-on-surface">Text Size</div>
+</div>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="1" type="range" value="50"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: System -->
+<section class="bg-surface-container-low rounded-xl p-1 relative overflow-hidden">
+<div class="relative z-10 p-5 space-y-4">
+<h2 class="font-headline text-lg font-semibold text-outline tracking-wide">System</h2>
+<div class="space-y-2">
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between transition-colors hover:bg-surface-container-high/80 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</div>
+<div class="font-body font-medium text-on-surface">Version</div>
+</div>
+<span class="font-body text-sm text-on-surface-variant">v4.2.0-beta (Build 8901)</span>
+</div>
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between transition-colors hover:bg-surface-container-high/80 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</div>
+<div class="font-body font-medium text-on-surface">Help &amp; Support</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="bg-surface-container rounded-lg p-4 flex items-center justify-between transition-colors hover:bg-error/10 cursor-pointer border border-transparent hover:border-error/30 mt-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<div class="font-body font-medium text-error">Logout</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-[#0e1322]/90 backdrop-blur-md border-t border-[#3b494c]/20 shadow-[0_-8px_30px_rgba(0,0,0,0.5)] rounded-t-xl">
+<a class="flex flex-col items-center text-[#dee1f7]/40 hover:text-[#c3f5ff] active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wider uppercase mt-1">Nexus</span>
+</a>
+<a class="flex flex-col items-center text-[#dee1f7]/40 hover:text-[#c3f5ff] active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wider uppercase mt-1">Analyze</span>
+</a>
+<a class="flex flex-col items-center text-[#dee1f7]/40 hover:text-[#c3f5ff] active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wider uppercase mt-1">Archive</span>
+</a>
+<a class="flex flex-col items-center text-[#00e5ff] drop-shadow-[0_0_8px_rgba(0,229,255,0.4)] active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wider uppercase mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

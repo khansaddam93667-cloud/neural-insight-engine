@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Intel Node: Alpha-721</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#dfb7ff",
+                        "on-tertiary": "#3e2e00",
+                        "on-secondary-container": "#f7e6ff",
+                        "on-secondary-fixed-variant": "#6b00b0",
+                        "surface-container": "#1a1f2f",
+                        "secondary-fixed": "#f1daff",
+                        "primary-fixed": "#9cf0ff",
+                        "primary-fixed-dim": "#00daf3",
+                        "secondary": "#dfb7ff",
+                        "on-primary": "#00363d",
+                        "outline-variant": "#3b494c",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-primary-fixed": "#001f24",
+                        "on-primary-container": "#00626e",
+                        "surface-tint": "#00daf3",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "inverse-primary": "#006875",
+                        "on-tertiary-container": "#6f5500",
+                        "surface": "#0e1322",
+                        "surface-container-highest": "#2f3445",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-secondary-fixed": "#2d004f",
+                        "on-surface": "#dee1f7",
+                        "surface-container-lowest": "#090e1c",
+                        "secondary-container": "#9d05ff",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#2b3040",
+                        "tertiary": "#ffeac0",
+                        "outline": "#849396",
+                        "surface-container-high": "#25293a",
+                        "on-error": "#690005",
+                        "primary": "#c3f5ff",
+                        "surface-bright": "#343949",
+                        "on-primary-fixed-variant": "#004f58",
+                        "primary-container": "#00e5ff",
+                        "surface-variant": "#2f3445",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#dee1f7",
+                        "on-surface-variant": "#bac9cc",
+                        "tertiary-container": "#fec931",
+                        "surface-container-low": "#161b2b",
+                        "on-secondary": "#4b007e",
+                        "background": "#0e1322",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#0e1322",
+                        "on-background": "#dee1f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #0e1322; }
+        .grid-bg {
+            background-image: 
+                linear-gradient(to right, rgba(59, 73, 76, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 73, 76, 0.1) 1px, transparent 1px);
+            background-size: 2rem 2rem;
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(195, 245, 255, 0.1);
+        }
+        .pulse-line {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body text-on-surface bg-surface-dim min-h-screen pb-24 grid-bg selection:bg-primary-container selection:text-on-primary-container"><div class="fixed top-24 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-3rem)] max-w-sm bg-green-900/90 backdrop-blur-md border border-green-500/50 rounded-lg p-4 shadow-2xl flex items-center gap-3 animate-bounce">
+<span class="material-symbols-outlined text-green-400">verified</span>
+<p class="text-sm font-bold text-green-50">Node Alpha-721 successfully verified</p>
+<button class="ml-auto text-green-400/50 hover:text-green-400" onclick="this.parentElement.remove()">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-6 h-20 w-full fixed top-0 z-50 bg-[#0e1322]/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+<button class="text-[#c3f5ff] hover:bg-[#25293a] p-2 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_back</span>
+</button>
+<h1 class="text-[#00e5ff] font-['Space_Grotesk'] tracking-tight font-bold text-lg">Intel Node: Alpha-721</h1>
+<button class="text-[#c3f5ff] hover:bg-[#25293a] p-2 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">forum</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-[1080px] mx-auto space-y-8">
+<!-- Header Card -->
+<section class="bg-surface-container-low rounded-lg p-6 relative overflow-hidden shadow-[0_0_30px_rgba(74,222,128,0.1)] border-green-500/20">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-2xl font-bold tracking-tight text-on-surface">Shell Corp Gamma</h2>
+<span class="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-green-500/20 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                        Verified
+                    </span>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check_circle</span> Verified Node</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> Updated 2h ago</span>
+</div>
+<p class="text-sm leading-relaxed text-on-surface/80 mt-2">
+                    Initial discovery indicates significant asset transfer anomalies linked to off-shore accounts. Pattern matches previously identified evasion tactics used by Alpha Syndicate.
+                </p>
+<div class="flex gap-3 mt-4">
+<button class="flex-1 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Note
+                    </button>
+<button class="flex-1 bg-surface-container-highest text-on-surface font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 border border-outline-variant/20 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-[18px]">hub</span> View Graph
+                    </button>
+</div>
+</div>
+</section>
+<!-- Thread/Timeline -->
+<section class="relative">
+<div class="absolute left-[19px] top-4 bottom-0 w-px bg-outline-variant/30"></div>
+<div class="space-y-6">
+<!-- Event 1 -->
+<div class="relative pl-12">
+<div class="absolute left-0 top-1 w-10 h-10 bg-surface-container flex items-center justify-center rounded-full border border-primary/30 z-10 glow-primary">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'wght' 300;">radar</span>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/20">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline font-bold text-lg text-primary">Discovery</h3>
+<span class="text-xs text-on-surface-variant">Oct 24, 09:41 Z</span>
+</div>
+<p class="text-sm text-on-surface/70 mb-3">Automated scrape detected unusual cross-border transactions.</p>
+<div class="bg-surface-container-lowest p-3 rounded lg font-mono text-xs text-on-surface-variant break-all border border-outline-variant/10">
+                            &gt; SRC: TXN_LOG_8829<br/>
+                            &gt; AMT: 4,500,000 USD<br/>
+                            &gt; DEST: UNKNOWN_NODE_XY
+                        </div>
+</div>
+</div>
+<!-- Intervention 1 -->
+<div class="relative pl-12">
+<div class="absolute left-0 top-1 w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded-full border border-secondary/30 z-10">
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'wght' 300;">person</span>
+</div>
+<div class="bg-surface-container-highest rounded-lg p-4 border border-outline-variant/20 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<h3 class="font-headline font-bold text-md text-on-surface">Dr. Sarah Jenkins</h3>
+<span class="bg-secondary/10 text-secondary text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Comment</span>
+</div>
+<span class="text-xs text-on-surface-variant">Oct 24, 11:15 Z</span>
+</div>
+<p class="text-sm text-on-surface/80 italic">"The routing number in the destination field matches a known shell company we investigated last year. We need to look into Global Holdings Ltd immediately."</p>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative pl-12">
+<div class="absolute left-0 top-1 w-10 h-10 bg-surface-container flex items-center justify-center rounded-full border border-outline-variant/50 z-10">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" style="font-variation-settings: 'wght' 300;">description</span>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/20">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline font-bold text-lg text-on-surface">Related Document Added</h3>
+<span class="text-xs text-on-surface-variant">Oct 25, 08:22 Z</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10 mt-2">
+<div class="bg-error/10 p-2 rounded lg">
+<span class="material-symbols-outlined text-error text-[20px]" style="font-variation-settings: 'wght' 300;">picture_as_pdf</span>
+</div>
+<div>
+<p class="text-sm font-medium text-on-surface">Bank_Statement_Leak_Q3.pdf</p>
+<p class="text-xs text-on-surface-variant">2.4 MB • Encrypted</p>
+</div>
+<button class="ml-auto text-primary hover:text-primary-container">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300;">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative pl-12">
+<div class="absolute left-0 top-1 w-10 h-10 bg-surface-container flex items-center justify-center rounded-full border border-primary/30 z-10 glow-primary">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'wght' 300;">link</span>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/20 relative overflow-hidden">
+<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(156,240,255,0.05)_50%,transparent_100%)] pulse-line"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<h3 class="font-headline font-bold text-lg text-primary">Connection Established</h3>
+<span class="text-xs text-on-surface-variant">Oct 25, 14:05 Z</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10 relative z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">domain</span>
+<span class="text-sm font-bold text-on-surface">Alpha-721</span>
+</div>
+<div class="flex-1 flex items-center justify-center px-4">
+<div class="h-px bg-secondary flex-1"></div>
+<span class="material-symbols-outlined text-secondary text-[14px] mx-2">arrow_forward</span>
+<div class="h-px bg-secondary flex-1"></div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-secondary">Global Holdings Ltd</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">public</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant mt-3 relative z-10 text-center">Confidence Score: 94%</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center z-50 bg-[#0e1322]/90 backdrop-blur-2xl shadow-[0_-10px_40px_rgba(0,0,0,0.6)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#00e5ff] drop-shadow-[0_0_5px_rgba(0,229,255,0.4)] hover:text-[#c3f5ff]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">insights</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Intelligence</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/30 hover:text-[#c3f5ff]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">public</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Risk Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/30 hover:text-[#c3f5ff]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">compare_arrows</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Compare</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#dee1f7]/30 hover:text-[#c3f5ff]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">inventory_2</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Archive</span>
+</a>
+</nav>
+<button class="fixed bottom-20 right-6 z-[60] w-14 h-14 bg-green-500 text-on-primary-container rounded-full shadow-[0_8px_30px_rgba(34,197,94,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 md:bottom-24 md:right-12">
+<span class="material-symbols-outlined text-[28px] font-bold">check_circle</span>
+<span class="sr-only">Verify Node</span>
+</button></body></html>

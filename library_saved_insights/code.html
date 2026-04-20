@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aether Pulse - Library</title>
+<!-- Google Fonts: Space Grotesk & Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Base icon styling for thin-line futuristic look */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Hide scrollbar for horizontal lists */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#dee1f7",
+                        "surface-bright": "#343949",
+                        "surface-container-highest": "#2f3445",
+                        "on-surface": "#dee1f7",
+                        "surface-variant": "#2f3445",
+                        "inverse-on-surface": "#2b3040",
+                        "surface-dim": "#0e1322",
+                        "surface-container": "#1a1f2f",
+                        "inverse-primary": "#006875",
+                        "tertiary": "#ffeac0",
+                        "secondary-fixed-dim": "#dfb7ff",
+                        "tertiary-container": "#fec931",
+                        "on-secondary-fixed-variant": "#6b00b0",
+                        "inverse-surface": "#dee1f7",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#ffdf96",
+                        "primary-container": "#00e5ff",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-primary": "#00363d",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-primary-container": "#00626e",
+                        "on-secondary-container": "#f7e6ff",
+                        "secondary-fixed": "#f1daff",
+                        "primary": "#c3f5ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#161b2b",
+                        "on-secondary": "#4b007e",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "surface-container-high": "#25293a",
+                        "surface": "#0e1322",
+                        "outline": "#849396",
+                        "on-secondary-fixed": "#2d004f",
+                        "on-primary-fixed": "#001f24",
+                        "surface-tint": "#00daf3",
+                        "on-surface-variant": "#bac9cc",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#6f5500",
+                        "primary-fixed": "#9cf0ff",
+                        "surface-container-lowest": "#090e1c",
+                        "outline-variant": "#3b494c",
+                        "secondary-container": "#9d05ff",
+                        "secondary": "#dfb7ff",
+                        "background": "#0e1322",
+                        "on-tertiary": "#3e2e00",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim text-on-surface font-body min-h-screen pb-28 selection:bg-primary-container selection:text-on-primary-container antialiased">
+<!-- TopAppBar from JSON -->
+<header class="docked full-width top-0 sticky z-50 bg-[#0e1322]/80 backdrop-blur-xl bg-gradient-to-b from-[#161b2b] to-transparent shadow-[0_10px_30px_-15px_rgba(0,229,255,0.1)] flex justify-between items-center px-6 py-4 w-full border-none">
+<button aria-label="Menu" class="active:scale-95 transition-transform hover:bg-[#25293a] p-2 rounded-full duration-300 flex items-center justify-center group">
+<span class="material-symbols-outlined text-[#c3f5ff] group-hover:text-white transition-colors">menu</span>
+</button>
+<h1 class="text-[#c3f5ff] font-['Space_Grotesk'] font-bold tracking-tight text-xl">Library</h1>
+<button aria-label="User Profile" class="active:scale-95 transition-transform hover:bg-[#25293a] p-1.5 rounded-full duration-300 flex items-center justify-center overflow-hidden ring-1 ring-outline-variant/30 relative">
+<!-- Simulated Avatar with gradient representing data aura -->
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-primary-container opacity-80" data-alt="Abstract gradient mesh representing a user avatar in deep navy, soft cyan and muted violet tones"></div>
+</button>
+</header>
+<main class="px-5 py-6 space-y-10 flex flex-col">
+<!-- Search & Filter Area -->
+<section class="space-y-6">
+<!-- Minimalist Search Input -->
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors text-[22px]">search</span>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary text-inverse-surface py-3 pl-8 pr-4 outline-none transition-all placeholder:text-on-surface-variant font-body text-base bg-gradient-to-t from-surface-container-high/0 focus:from-surface-container-high/20 to-transparent focus:ring-0" placeholder="Search insights, nodes, or tags..." type="text"/>
+</div>
+<!-- Segmented Control / Filters -->
+<div class="flex overflow-x-auto gap-3 pb-2 no-scrollbar">
+<button class="bg-surface-container-high text-primary px-5 py-2 rounded-full text-sm font-label font-medium tracking-wide whitespace-nowrap shadow-[0_0_15px_rgba(195,245,255,0.05)] border border-primary/20 transition-colors">All</button>
+<button class="bg-surface-container-low text-on-surface-variant hover:text-inverse-surface hover:bg-surface-variant px-5 py-2 rounded-full text-sm font-label font-medium tracking-wide whitespace-nowrap transition-colors border border-transparent">Insights</button>
+<button class="bg-surface-container-low text-on-surface-variant hover:text-inverse-surface hover:bg-surface-variant px-5 py-2 rounded-full text-sm font-label font-medium tracking-wide whitespace-nowrap transition-colors border border-transparent">Snippets</button>
+<button class="bg-surface-container-low text-on-surface-variant hover:text-inverse-surface hover:bg-surface-variant px-5 py-2 rounded-full text-sm font-label font-medium tracking-wide whitespace-nowrap transition-colors border border-transparent">Citations</button>
+</div>
+</section>
+<!-- Collections / Folders Area -->
+<section class="space-y-4">
+<div class="flex justify-between items-end mb-2">
+<h2 class="font-headline text-2xl tracking-tight text-inverse-surface">Collections</h2>
+<span class="material-symbols-outlined text-outline-variant text-xl cursor-pointer hover:text-primary transition-colors">add_circle</span>
+</div>
+<!-- Bento-style grid for folders -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Folder Card 1 -->
+<div class="bg-surface-variant/60 backdrop-blur-xl rounded-xl p-5 flex flex-col gap-3 relative overflow-hidden group border border-outline-variant/10 cursor-pointer">
+<!-- Subtle Glow -->
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<span class="material-symbols-outlined text-secondary text-2xl group-hover:scale-110 transition-transform">folder_open</span>
+<div class="mt-2">
+<h3 class="font-headline text-base text-inverse-surface mb-1">Market Divergence</h3>
+<p class="font-label text-xs text-on-surface-variant">24 Items</p>
+</div>
+</div>
+<!-- Folder Card 2 -->
+<div class="bg-surface-variant/60 backdrop-blur-xl rounded-xl p-5 flex flex-col gap-3 relative overflow-hidden group border border-outline-variant/10 cursor-pointer">
+<!-- Subtle Glow -->
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<span class="material-symbols-outlined text-secondary text-2xl group-hover:scale-110 transition-transform">biotech</span>
+<div class="mt-2">
+<h3 class="font-headline text-base text-inverse-surface mb-1">Neural Protocols</h3>
+<p class="font-label text-xs text-on-surface-variant">8 Items</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Saved Insights Section -->
+<section class="space-y-4">
+<h2 class="font-headline text-2xl tracking-tight text-inverse-surface mb-2">Saved Insights</h2>
+<div class="flex flex-col gap-5">
+<!-- Insight Card 1 -->
+<div class="bg-surface-container-low rounded-xl p-5 flex flex-col gap-4 relative overflow-hidden group hover:bg-surface-container transition-colors duration-300 cursor-pointer border border-transparent hover:border-outline-variant/20">
+<!-- AI Connection Line decorative element -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary to-transparent opacity-50"></div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline text-lg leading-tight text-inverse-surface group-hover:text-primary transition-colors duration-300">Algorithmic Bias in Synthetic Datasets</h3>
+<p class="font-body text-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                            Analysis indicates a 14% deviation in baseline assumptions when utilizing uncalibrated synthetic data streams. The primary vector of contamination originates from legacy NLP models acting as structural scaffolds.
+                        </p>
+</div>
+<div class="flex justify-between items-center mt-2 border-t border-outline-variant/10 pt-3">
+<div class="flex items-center gap-1.5 text-xs font-label text-outline">
+<span class="material-symbols-outlined text-[14px]">book</span>
+<span class="truncate max-w-[150px]">From: Core Mechanics Study</span>
+</div>
+<span class="text-xs font-label text-outline-variant">Oct 24</span>
+</div>
+</div>
+<!-- Insight Card 2 -->
+<div class="bg-surface-container-low rounded-xl p-5 flex flex-col gap-4 relative overflow-hidden group hover:bg-surface-container transition-colors duration-300 cursor-pointer border border-transparent hover:border-outline-variant/20">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-transparent opacity-30"></div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline text-lg leading-tight text-inverse-surface group-hover:text-primary transition-colors duration-300">Quantum Annealing Efficiency Rates</h3>
+<p class="font-body text-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                            Observed a marginal but statistically significant plateau in processing speed gains past the 2048-qubit threshold. Requires further temporal analysis to discount environmental noise.
+                        </p>
+</div>
+<div class="flex justify-between items-center mt-2 border-t border-outline-variant/10 pt-3">
+<div class="flex items-center gap-1.5 text-xs font-label text-outline">
+<span class="material-symbols-outlined text-[14px]">link</span>
+<span class="truncate max-w-[150px]">From: Hardware Horizon</span>
+</div>
+<span class="text-xs font-label text-outline-variant">Oct 21</span>
+</div>
+</div>
+<!-- Insight Card 3 -->
+<div class="bg-surface-container-low rounded-xl p-5 flex flex-col gap-4 relative overflow-hidden group hover:bg-surface-container transition-colors duration-300 cursor-pointer border border-transparent hover:border-outline-variant/20">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-tertiary-container to-transparent opacity-30"></div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline text-lg leading-tight text-inverse-surface group-hover:text-primary transition-colors duration-300">User Retention vs Cognitive Load</h3>
+<p class="font-body text-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                            Interfaces exhibiting more than 3 distinct visual hierarchies per viewport correlate strongly with a 22% drop in session duration among deep-research demographics.
+                        </p>
+</div>
+<div class="flex justify-between items-center mt-2 border-t border-outline-variant/10 pt-3">
+<div class="flex items-center gap-1.5 text-xs font-label text-outline">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+<span class="truncate max-w-[150px]">From: UX Behavioral Audit</span>
+</div>
+<span class="text-xs font-label text-outline-variant">Oct 18</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar from JSON -->
+<nav class="fixed bottom-0 left-0 w-full rounded-t-3xl z-50 bg-[#161b2b]/90 backdrop-blur-2xl border-t-0 shadow-[0_-8px_25px_-10px_rgba(0,229,255,0.15)] flex justify-around items-center px-4 pb-6 pt-3 md:hidden">
+<!-- Nav Item: Research -->
+<button class="flex flex-col items-center justify-center text-[#dee1f7]/40 px-5 py-2 hover:text-[#c3f5ff] transition-all active:scale-90 duration-200 group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">query_stats</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide">Research</span>
+</button>
+<!-- Nav Item: Library (ACTIVE STATE) -->
+<button class="flex flex-col items-center justify-center text-[#c3f5ff] bg-[#c3f5ff]/10 rounded-2xl px-5 py-2 ring-1 ring-[#c3f5ff]/20 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide">Library</span>
+</button>
+<!-- Nav Item: Insights -->
+<button class="flex flex-col items-center justify-center text-[#dee1f7]/40 px-5 py-2 hover:text-[#c3f5ff] transition-all active:scale-90 duration-200 group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">lightbulb</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide">Insights</span>
+</button>
+<!-- Nav Item: Nexus -->
+<button class="flex flex-col items-center justify-center text-[#dee1f7]/40 px-5 py-2 hover:text-[#c3f5ff] transition-all active:scale-90 duration-200 group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">hub</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-wide">Nexus</span>
+</button>
+</nav>
+</body></html>
