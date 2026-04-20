@@ -302,7 +302,6 @@
 </div>
 </nav>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
         const searchInput = document.getElementById("search-input");
         const searchBtn = document.getElementById("search-btn");
         const insightsContainer = document.getElementById("insights-container");
@@ -310,6 +309,7 @@
         searchBtn.addEventListener("click", async () => {
             const query = searchInput.value.trim();
             if (!query) return;
+
 
             // Show loading state
             searchBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span>';
@@ -377,6 +377,5 @@
                 searchBtn.click();
             }
         });
-    });
 </script>
 </body></html>
